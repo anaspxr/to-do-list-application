@@ -1,0 +1,71 @@
+body {
+  color: rgb(46, 0, 77);
+  background-color: rgb(236, 206, 248);
+}
+
+.currentTasks_container,
+.trashedTasks_container,
+.completedTasks_container {
+  background-color: rgb(228, 173, 249);
+  padding: 10px;
+  border-radius: 10px;
+  width: 400px;
+}
+#taskInputField {
+  max-width: 400px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+button {
+  background-color: rgb(171, 96, 241);
+  border: none;
+  border-radius: 50%;
+  text-align: center;
+  height: 20px;
+  width: 20px;
+}
+button:hover {
+  background-color: blueviolet;
+  cursor: pointer;
+}
+
+.tasksInList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2px;
+  border-bottom: 1px solid;
+}
+
+.addTaskButton {
+  width: 80px;
+  height: 30px;
+  border-radius: 20px;
+}
+input {
+  width: 400px;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.main_container {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 100px;
+}
+.newTask_container {
+  min-width: 300px;
+}
+
+.second_container {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 100px;
+  row-gap: 50px;
+}
