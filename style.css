@@ -4,14 +4,14 @@ body {
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
-  color: rgb(46, 0, 77);
-  background-color: rgb(236, 206, 248);
+  color: rgb(23, 0, 39);
+  background-color: rgb(243, 214, 255);
 }
 
 .currentTasks_container,
 .trashedTasks_container,
 .completedTasks_container {
-  background-color: rgb(228, 173, 249);
+  background-color: rgb(225, 190, 239);
   padding: 10px;
   border-radius: 10px;
   width: 400px;
@@ -90,10 +90,11 @@ button svg {
   padding: 2px;
 }
 
-#trashedTasks button:hover svg,
+#trashedTasks button:last-child:hover svg,
 #completedTasks button:hover svg {
   transform: rotate(360deg);
 }
+
 #trashedTasks button svg,
 #completedTasks button svg {
   transition: transform 0.5s;
@@ -116,7 +117,8 @@ button svg {
     transform: translateX(0);
   }
 }
-#currentTasks button:hover .trashButton {
+#currentTasks button:hover .trashButton,
+button[onclick="permaDelete()"] {
   animation: shake 0.5s ease-in-out;
 }
 #currentTasks button:last-child:hover {
