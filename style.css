@@ -1,4 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 body {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
   color: rgb(46, 0, 77);
   background-color: rgb(236, 206, 248);
 }
@@ -68,4 +73,62 @@ input {
   flex-wrap: wrap;
   column-gap: 100px;
   row-gap: 50px;
+}
+
+button svg {
+  width: 15px;
+  height: 15px;
+}
+
+#currentTasks button,
+#trashedTasks button,
+#completedTasks button {
+  padding: 2px;
+}
+
+#trashedTasks button:hover svg,
+#completedTasks button:hover svg {
+  transform: rotate(360deg);
+}
+#trashedTasks button svg,
+#completedTasks button svg {
+  transition: transform 0.5s;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  10%,
+  50%,
+  90% {
+    transform: translateX(-2px);
+  }
+  30%,
+  60% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+#currentTasks button:hover .trashButton {
+  animation: shake 0.5s ease-in-out;
+}
+#currentTasks button:last-child:hover {
+  background-image: url(icon/completed.gif);
+  background-size: 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#currentTasks button:hover .completedButton {
+  visibility: hidden;
+}
+
+button[onclick="newInputBox()"]:hover,
+button[onclick="removeInputBox()"]:hover {
+  transform: scale(1.1);
+}
+button[onclick="newInputBox()"] {
+  transition: transform 0.5s;
 }
