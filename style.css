@@ -57,7 +57,11 @@ input {
   border-radius: 20px;
   padding: 10px;
 }
-
+@media screen and (max-width: 450px) {
+  body input {
+    width: 100%;
+  }
+}
 .main_container {
   display: flex;
   flex-wrap: wrap;

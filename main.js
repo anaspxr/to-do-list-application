@@ -46,10 +46,19 @@ const undoButton = `<?xml version="1.0" encoding="iso-8859-1"?>
 
 // document.querySelector("#currentTasks Button").innerHTML = completedButtonGif;
 
-const tasks = [];
-const trashedTasks = [];
-const completedTasks = [];
+const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+const trashedTasks = JSON.parse(localStorage.getItem("trashedTasks")) || [];
+const completedTasks = JSON.parse(localStorage.getItem("completedTasks")) || [];
 let inputFieldsCount = 1;
+listTasks();
+listCompleted();
+listTrashed();
+
+function saveToLocalStorage() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  localStorage.setItem("trashedTasks", JSON.stringify(trashedTasks));
+  localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
+}
 
 function newInputBox() {
   const inputField = document.createElement("input");
@@ -72,8 +81,10 @@ function addTask() {
   for (let i = 0; i < inputFields.length; i++) {
     if (inputFields[i].value) {
       tasks.push(inputFields[i].value);
+      inputFields[i].value = "";
     }
   }
+  saveToLocalStorage();
   listTasks();
 }
 
@@ -84,6 +95,7 @@ function createButton(title, symbol, array1, array2, task, i) {
   newButton.onclick = () => {
     array1.push(task);
     array2.splice(i, 1);
+    saveToLocalStorage();
     listTasks();
     listTrashed();
     listCompleted();
@@ -130,7 +142,7 @@ function listCompleted() {
     completedTasks.forEach((task, i) => {
       const taskDisplay = document.createElement("p");
       taskDisplay.className = "tasksInList";
-      taskDisplay.innerHTML = `Task ${i + 1} : ${task}`;
+      taskDisplay.innerHTML = `<li> ${task} </li>`;
       taskDisplay.appendChild(
         createButton(
           "move back to to-do list",
@@ -157,7 +169,7 @@ function listTrashed() {
     trashedTasks.forEach((task, i) => {
       const taskDisplay = document.createElement("p");
       taskDisplay.className = "tasksInList";
-      taskDisplay.innerHTML = `Task ${i + 1} : ${task}`;
+      taskDisplay.innerHTML = `<li> ${task} </li>`;
       taskDisplay.appendChild(
         createButton(
           "move back to to-do list",
